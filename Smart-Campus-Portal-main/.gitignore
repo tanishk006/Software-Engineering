@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json.backup
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.env
+*.env.*
+!*.env.example
+
+# Production builds
+dist/
+dist-ssr/
+build/
+*/dist/
+*/build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Server uploads (ignore all uploaded files, keep directories via .gitkeep)
+server/uploads/**/*
+!server/uploads/**/
+!server/uploads/**/.gitkeep
+
+# Temporary / scratch scripts
+server/scratch/
+scratch/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak

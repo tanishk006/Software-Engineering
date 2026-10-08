@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Campus Portal — Software Requirements Specification (SRS)</title>
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Marked.js & Mermaid.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --secondary: #0f172a;
+      --accent: #2563eb;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --code-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+      padding-bottom: 80px;
+    }
+
+    /* Fixed Top Action Bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .top-bar-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-print {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+    }
+
+    .btn-print:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Document Container */
+    .document-wrapper {
+      max-width: 980px;
+      margin: 32px auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      padding: 56px 64px;
+    }
+
+    /* Document Header Banner */
+    .doc-banner {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    /* Markdown Rendered Typography */
+    #content h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--secondary);
+      letter-spacing: -0.5px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    #content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: -0.3px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 6px;
+    }
+
+    #content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    #content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    #content p {
+      margin-bottom: 14px;
+      color: #334155;
+    }
+
+    #content ul, #content ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: #334155;
+    }
+
+    #content li {
+      margin-bottom: 6px;
+    }
+
+    #content hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    /* Tables */
+    #content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px 0;
+      font-size: 13.5px;
+    }
+
+    #content th, #content td {
+      border: 1px solid var(--border);
+      padding: 9px 13px;
+      text-align: left;
+    }
+
+    #content th {
+      background-color: #f8fafc;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    #content tr:nth-child(even) td {
+      background-color: #fbfcfe;
+    }
+
+    /* Code Blocks & Inline Code */
+    #content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: var(--code-bg);
+      color: #0f172a;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    #content pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+
+    #content pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    /* Mermaid Diagrams Styling */
+    .mermaid-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .mermaid-box svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Print Optimization Rules */
+    @media print {
+      body {
+        background: #ffffff !important;
+        font-size: 11pt !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+
+      .top-bar {
+        display: none !important;
+      }
+
+      .document-wrapper {
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .mermaid-box {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+      }
+
+      h1, h2, h3 {
+        page-break-after: avoid !important;
+      }
+
+      table {
+        page-break-inside: auto !important;
+      }
+
+      tr {
+        page-break-inside: avoid !important;
+        page-break-after: auto !important;
+      }
+
+      @page {
+        margin: 1.8cm 1.5cm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Bar for Browsing and Printing -->
+  <div class="top-bar">
+    <div class="top-bar-title">
+      <span>Smart Campus Portal</span>
+      <span class="badge">SRS Document v1.0</span>
+      <span style="font-size: 12px; color: var(--text-muted); font-weight: normal;">IEEE 830-1998 Standard</span>
+    </div>
+    <div>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Export / Print to PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Viewport -->
+  <div class="document-wrapper">
+    <div id="content">Loading Software Requirements Specification...</div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+    });
+
+    async function loadSRS() {
+      try {
+        const response = await fetch('SRS_DOCUMENT.md');
+        if (!response.ok) {
+          throw new Error('Failed to fetch SRS_DOCUMENT.md');
+        }
+        const markdown = await response.text();
+
+        // Configure Marked with custom renderer for Mermaid codeblocks
+        const renderer = new marked.Renderer();
+        const defaultCode = renderer.code.bind(renderer);
+
+        renderer.code = function(token) {
+          const codeText = typeof token === 'object' ? token.text : token;
+          const lang = typeof token === 'object' ? token.lang : arguments[1];
+
+          if (lang === 'mermaid') {
+            return `<div class="mermaid-box"><pre class="mermaid">${codeText}</pre></div>`;
+          }
+          return defaultCode(token);
+        };
+
+        marked.setOptions({ renderer: renderer });
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+
+        // Run mermaid on all rendered diagram blocks
+        await mermaid.run({
+          querySelector: '.mermaid'
+        });
+      } catch (err) {
+        document.getElementById('content').innerHTML = `
+          <div style="padding: 24px; border: 1px solid #fecaca; background: #fef2f2; border-radius: 8px; color: #991b1b;">
+            <h3>Error Loading SRS Document</h3>
+            <p>${err.message}</p>
+            <p>Please open this file via a local HTTP server or view <a href="SRS_DOCUMENT.md">SRS_DOCUMENT.md</a> directly.</p>
+          </div>
+        `;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadSRS);
+  </script>
+</body>
+</html>

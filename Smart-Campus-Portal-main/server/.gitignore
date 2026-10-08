@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+uploads/**/*
+!uploads/**/
+!uploads/**/.gitkeep
+scratch/
+logs/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

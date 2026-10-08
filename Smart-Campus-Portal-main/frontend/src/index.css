@@ -1,0 +1,248 @@
+/* 1. ALL IMPORTS MUST BE AT THE VERY TOP */
+@import url('https://googleapis.com');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+
+@theme {
+ 
+  --font-poppins: 'Poppins', sans-serif;
+  --font-unica: 'Unica One', sans-serif;
+
+  /* Dust Grey Palette */
+  --color-dust-grey: #d6d6d6;
+  --color-dust-grey-100: #2b2b2b;
+  --color-dust-grey-200: #565656;
+  --color-dust-grey-300: #818181;
+  --color-dust-grey-400: #ababab;
+  --color-dust-grey-500: #d6d6d6;
+  --color-dust-grey-600: #dedede;
+  --color-dust-grey-700: #e7e7e7;
+  --color-dust-grey-800: #efefef;
+  --color-dust-grey-900: #f7f7f7;
+
+  /* Bright Lemon Palette */
+  --color-bright-lemon: #ffee32;
+  --color-bright-lemon-100: #3d3800;
+  --color-bright-lemon-200: #7a7000;
+  --color-bright-lemon-300: #b8a800;
+  --color-bright-lemon-400: #f5e000;
+  --color-bright-lemon-500: #ffee32;
+  --color-bright-lemon-600: #fff15c;
+  --color-bright-lemon-700: #fff585;
+  --color-bright-lemon-800: #fff8ad;
+  --color-bright-lemon-900: #fffcd6;
+
+  /* Bright Amber Palette */
+  --color-bright-amber: #ffd100;
+  --color-bright-amber-100: #332a00;
+  --color-bright-amber-200: #665300;
+  --color-bright-amber-300: #997d00;
+  --color-bright-amber-400: #cca700;
+  --color-bright-amber-500: #ffd100;
+  --color-bright-amber-600: #ffda33;
+  --color-bright-amber-700: #ffe366;
+  --color-bright-amber-800: #ffec99;
+  --color-bright-amber-900: #fff6cc;
+
+  /* Carbon Black Palette */
+  --color-carbon-black: #202020;
+  --color-carbon-black-100: #070707;
+  --color-carbon-black-200: #0d0d0d;
+  --color-carbon-black-300: #141414;
+  --color-carbon-black-400: #1b1b1b;
+  --color-carbon-black-500: #202020;
+  --color-carbon-black-600: #4e4e4e;
+  --color-carbon-black-700: #7a7a7a;
+  --color-carbon-black-800: #a6a6a6;
+  --color-carbon-black-900: #d3d3d3;
+
+  /* Graphite Palette */
+  --color-graphite: #333533;
+  --color-graphite-100: #0a0a0a;
+  --color-graphite-200: #141514;
+  --color-graphite-300: #1e1f1e;
+  --color-graphite-400: #282a28;
+  --color-graphite-500: #333533;
+  --color-graphite-600: #5a5e5a;
+  --color-graphite-700: #828782;
+  --color-graphite-800: #acafac;
+  --color-graphite-900: #d5d7d5;
+
+  /* Floral White */
+  --color-floral-white-50: #fff9e5;
+  --color-floral-white-100: #fff3cc;
+  --color-floral-white-200: #ffe799;
+  --color-floral-white-300: #ffdb66;
+  --color-floral-white-400: #ffcf33;
+  --color-floral-white-500: #ffc300;
+  --color-floral-white-600: #cc9c00;
+  --color-floral-white-700: #997500;
+  --color-floral-white-800: #664e00;
+  --color-floral-white-900: #332700;
+  --color-floral-white-950: #241b00;
+
+  /* Charcoal Brown */
+  --color-charcoal-brown-50: #f3f2f1;
+  --color-charcoal-brown-100: #e7e6e4;
+  --color-charcoal-brown-200: #cfccc9;
+  --color-charcoal-brown-300: #b7b3ae;
+  --color-charcoal-brown-400: #9f9a93;
+  --color-charcoal-brown-500: #878178;
+  --color-charcoal-brown-600: #6c6760;
+  --color-charcoal-brown-700: #514d48;
+  --color-charcoal-brown-800: #363330;
+  --color-charcoal-brown-900: #1b1a18;
+  --color-charcoal-brown-950: #131211;
+
+  /* Spicy Paprika */
+  --color-spicy-paprika-50: #fdeee8;
+  --color-spicy-paprika-100: #fbdcd0;
+  --color-spicy-paprika-200: #f6baa2;
+  --color-spicy-paprika-300: #f29773;
+  --color-spicy-paprika-400: #ee7444;
+  --color-spicy-paprika-500: #e95216;
+  --color-spicy-paprika-600: #bb4111;
+  --color-spicy-paprika-700: #8c310d;
+  --color-spicy-paprika-800: #5d2109;
+  --color-spicy-paprika-900: #2f1004;
+  --color-spicy-paprika-950: #210b03;
+}
+
+/* 3. SHADCN / INLINE CONTEXT REGENERATION */
+@theme inline {
+  --font-heading: var(--font-poppins); /* Changed default heading to Poppins */
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* 4. BASE LAYER UTILITIES */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans; /* Falls back to Geist Variable via theme inline */
+  }
+}
