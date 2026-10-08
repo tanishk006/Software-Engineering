@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../features/auth/pages/Login';
 import ForgotPassword from '../features/auth/pages/ForgotPassword';
 import Signup from '../features/auth/pages/Signup';
-import Dashboard from '../features/dashboard/pages/Dashboard';
+import Dashboard from '../features/dashboard/pages/dashboard';
 import Events from '../features/events/pages/Events';
 import LostFound from '../features/lost-found/pages/LostFound';
 import FacultyDirectory from '../features/faculty-directory/pages/FacultyDirectory';
