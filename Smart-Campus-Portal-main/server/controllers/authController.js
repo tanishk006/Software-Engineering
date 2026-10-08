@@ -113,7 +113,7 @@ const googleLogin = async (req, res, next) => {
 };
 
 const googleOAuthCallback = async (req, res, next) => {
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+  const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').replace(/\/+$/, '');
   try {
     const { code, state, error } = req.query;
 

@@ -34,7 +34,7 @@ const defaultAllowedOrigins = [
 
 const envAllowed = (process.env.FRONTEND_URL || '')
   .split(',')
-  .map((o) => o.trim())
+  .map((o) => o.trim().replace(/\/+$/, ''))
   .filter(Boolean);
 
 const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...envAllowed]));
