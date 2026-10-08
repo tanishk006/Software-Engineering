@@ -46,7 +46,7 @@ const Login = () => {
       await loginGoogle(credentialResponse.credential);
       navigate('/dashboard');
     } catch (err) {
-      setErrorMsg(err.message || 'Google authentication was rejected by the server.');
+      setErrorMsg(err.response?.data?.message || err.message || 'Google authentication was rejected by the server.');
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ const Login = () => {
       await login(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setErrorMsg(err.message || 'Invalid email or password.');
+      setErrorMsg(err.response?.data?.message || err.message || 'Invalid email or password.');
     } finally {
       setLoading(false);
     }
