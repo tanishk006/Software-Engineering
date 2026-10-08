@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import ClickSpark from "@/Components/ui/ClickSpark";
+import ClickSpark from '../../../Components/ui/ClickSpark';
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useAuth } from '../../../context/AuthContext';
